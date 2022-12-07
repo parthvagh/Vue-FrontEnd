@@ -25,13 +25,27 @@ export default {
     }
 
   },
+  methods:{
+        //promiss 
+          async fetchMotels(){
+          const res = await fetch ("https://motel-system.herokuapp.com/api")
+          const data = await res.json()
+          console.log(data)
+          return data.motels
+        }
+      },
+      async created(){
+        this.motels = await this.fetchMotels()
+      }
+  /**
   mounted(){
-    
-    fetch("http://localhost:4167/api", {method:"POST"},)
+    //fetch("https://motel-management-system.herokuapp.com/api")
+     fetch("http://localhost:4167/api")
       .then(res => res.json())
       .then(data => this.motels = data)
       .catch(err => console.log(err.message))
   }
+  */
 }
 
 </script>
